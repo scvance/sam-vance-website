@@ -1,6 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
@@ -21,7 +26,11 @@ const initialDelay = 4.4; // seconds before first slide appears
 const slides: Slide[] = [
   { src: "/flying-robot.png", alt: "", initialDelay: initialDelay },
   { src: "/legs.png", alt: "", initialDelay: initialDelay + 0.15 },
-  { src: "/light-painting-robot.png", alt: "", initialDelay: initialDelay + 0.3 },
+  {
+    src: "/light-painting-robot.png",
+    alt: "",
+    initialDelay: initialDelay + 0.3,
+  },
   { src: "/piano-game.png", alt: "", initialDelay: initialDelay + 0.45 },
   { src: "/plane.png", alt: "", initialDelay: initialDelay + 0.6 },
   { src: "/sam-plays-flute.png", alt: "", initialDelay: initialDelay + 0.75 },
@@ -29,11 +38,10 @@ const slides: Slide[] = [
 ];
 
 const phrases = [
-  "mathematician",
   "robotics engineer",
   "software engineer",
+  "mathematician",
   "innovator",
-  "genius",
 ];
 
 function Hero() {
@@ -56,17 +64,19 @@ function Hero() {
           <div className="flex flex-col justify-center items-center pb-3 pt-4 text-center">
             <motion.div
               initial={{ opacity: 0, x: 140 }} // Start slightly above and invisible
-              transition={{ delay: 0, duration: .7 }}
+              transition={{ delay: 0, duration: 0.7 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.4 }}
             >
-              <span className={`text-6xl md:text-9xl text-center whitespace-nowrap`}>
+              <span
+                className={`text-6xl md:text-9xl text-center whitespace-nowrap`}
+              >
                 <Typewriter text="sam vance" />
               </span>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
-              transition={{ delay: .5 }}
+              transition={{ delay: 0.5 }}
               whileInView={{ opacity: 1 }}
             >
               <AnimatePresence mode="wait">
@@ -106,13 +116,14 @@ function Hero() {
           <motion.div
             className="mt-[8%] text-center"
             initial={{ opacity: 0, y: -10 }}
-            transition={{ delay: 0, duration: .75, ease: "easeOut" }}
+            transition={{ delay: 0, duration: 0.75, ease: "easeOut" }}
             whileInView={{ opacity: 1, x: 0 }}
           >
-            <button className={`cursor-pointer text-2xl md:mb-0 mb-4 md:text-3xl font-light rounded-4xl hover:border-gray-300 py-2 px-4 border border-white/10 transition-all hover:font-medium shadow-[#faf8ed]/30 shadow-[0_0_6px_rgba(255,255,255,0.25)] 
+            <button
+              className={`cursor-pointer text-2xl md:mb-0 mb-4 md:text-3xl font-light rounded-4xl hover:border-gray-300 py-2 px-4 border border-white/10 transition-all hover:font-medium shadow-[#faf8ed]/30 shadow-[0_0_6px_rgba(255,255,255,0.25)] 
           hover:bg-[#faf8ed] hover:text-black hover:scale-105 duration-400 tracking-tighter
             hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]`}
-              onClick={() => router.push('/projects')}
+              onClick={() => router.push("/projects")}
             >
               check out my projects
             </button>
@@ -134,18 +145,28 @@ function Body() {
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        viewport={{ once: false, amount: 0.60 }} // only triggers once when ~30% visible
+        viewport={{ once: false, amount: 0.6 }} // only triggers once when ~30% visible
       >
         <div className="flex gap-2 md:gap-5 mx-[5%] md:mx-[15%] py-20 text-[2.75rem] my-14 md:my-30 mb-30">
-          <div className={` text-gray-600 text-8xl md:text-[200px] md:-mt-20 mr-1 md:mr-5`}>&ldquo;</div>
-          <div className={`text-xl md:text-4xl flex flex-col leading-relaxed gap-8 md:gap-14`}>
-            <span>There is no chance, no destiny, no fate, that can circumvent, or hinder, or control the firm resolve of a determined soul.<span className="relative inline-block h-[0.9em] overflow-hidden align-baseline leading-none">
-              <span
-                className={`block text-gray-600 text-[200px] leading-none -translate-y-[0.24em]`}
-              >
-                &rdquo;
+          <div
+            className={` text-gray-600 text-8xl md:text-[200px] md:-mt-20 mr-1 md:mr-5`}
+          >
+            &ldquo;
+          </div>
+          <div
+            className={`text-xl md:text-4xl flex flex-col leading-relaxed gap-8 md:gap-14`}
+          >
+            <span>
+              There is no chance, no destiny, no fate, that can circumvent, or
+              hinder, or control the firm resolve of a determined soul.
+              <span className="relative inline-block h-[0.9em] overflow-hidden align-baseline leading-none">
+                <span
+                  className={`block text-gray-600 text-[200px] leading-none -translate-y-[0.24em]`}
+                >
+                  &rdquo;
+                </span>
               </span>
-            </span></span>
+            </span>
 
             <span>— Ella Wheeler Wilcox</span>
           </div>
@@ -159,9 +180,7 @@ function Body() {
       </div>
     </section>
   );
-
 }
-
 
 function OverlapSection() {
   const ref = useRef(null);
@@ -177,22 +196,23 @@ function OverlapSection() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
 
   return (
-    <section
-      ref={ref}
-      className="relative flex items-center justify-center"
-    >
+    <section ref={ref} className="relative flex items-center justify-center">
       <div className="flex flex-col md:flex-row items-center justify-center relative">
         {/* Text side */}
         <motion.div
           initial={{ opacity: 0, x: -120 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.4 }}
           style={{ y: textY }}
           className="relative z-10 md:w-3/4 text-center -mt-30"
         >
           <p className="text-xl md:text-[1.75rem] font-bold leading-tight text-gray-100">
-            I love to build robots and I am so smart my name is Sam Vance and one day you will know me because I am famous. I am going to make a company that changes the world and therefore become very rich and buy a huge mansion wherever I desire. This is an ambition but also I know it will come true so it is also a destiny.
+            I love to mess around with technology and build new things. Whether
+            it's a robot that paints with light, a flying machine, or a game
+            that teaches the piano, I dive in headfirst. I try to document my
+            projects through videos, so hopefully you can get a sense of my
+            process and what I'm passionate about.
           </p>
         </motion.div>
 
@@ -200,7 +220,7 @@ function OverlapSection() {
         <motion.div
           initial={{ opacity: 0, x: 180 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.4 }}
           style={{ y: imageY }}
           className="relative md:-ml-40 w-3/4 z-0 mt-26 md:mt-0"
@@ -241,7 +261,7 @@ function OverlapSection2() {
         <motion.div
           initial={{ opacity: 0, x: -120 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.4 }}
           style={{ y: imageY }}
           className="hidden md:block relative z-0 w-3/4 text-center"
@@ -253,27 +273,29 @@ function OverlapSection2() {
             height={600}
             className="rounded-lg object-cover"
           />
-
         </motion.div>
 
         {/* Image side */}
         <motion.div
           initial={{ opacity: 0, x: 180 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.4 }}
           style={{ y: textY }}
           className="relative md:-ml-40 w-full md:w-3/4 z-10 -mt-20"
         >
           <p className="text-xl md:text-[1.75rem] font-bold leading-tight text-gray-100 text-center">
-            I love to build robots and I am so smart my name is Sam Vance and one day you will know me because I am famous. I am going to make a company that changes the world and therefore become very rich and buy a huge mansion wherever I desire. This is an ambition but also I know it will come true so it is also a destiny.
+            When I'm not building robots or coding, you can usually find me
+            outdoors. I love hiking, climbing, and exploring nature. I am also
+            an occasional pickleball player, and enjoy playing the piano and
+            ukulele.
           </p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, x: -120 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.4 }}
           style={{ y: imageY }}
           className="block md:hidden relative z-0 w-3/4 text-center mt-22 md:mt-32 mb-12"
@@ -291,10 +313,9 @@ function OverlapSection2() {
   );
 }
 
-type Slide = { src: string; alt: string, initialDelay: number };
+type Slide = { src: string; alt: string; initialDelay: number };
 
 function ProductCarousel({ slides }: { slides: Slide[] }) {
-
   function useIsMobile(breakpoint = 768) {
     const [isMobile, setIsMobile] = useState(false);
 
@@ -319,7 +340,10 @@ function ProductCarousel({ slides }: { slides: Slide[] }) {
   // Advance automatically using a re-arming timeout (avoids drift of setInterval)
   useEffect(() => {
     if (slides.length <= CARDS_TO_SHOW || paused) return;
-    const id = setTimeout(() => setIndex((i) => (i + 1) % slides.length), DURATION);
+    const id = setTimeout(
+      () => setIndex((i) => (i + 1) % slides.length),
+      DURATION
+    );
     return () => clearTimeout(id);
   }, [index, paused, slides.length]);
 
@@ -342,7 +366,11 @@ function ProductCarousel({ slides }: { slides: Slide[] }) {
           <motion.div
             className="flex gap-6"
             animate={{ x: offset }}
-            transition={{ delay: 0, duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{
+              delay: 0,
+              duration: 1.2,
+              ease: [0.25, 0.46, 0.45, 0.94],
+            }}
             aria-live="polite"
           >
             {/* Render extra cards for smooth infinite scrolling */}
