@@ -1,24 +1,26 @@
 "use client";
 
-import { GalleryTemplate, GalleryTemplateProps } from "../components/GalleryTemplate";
+import {
+  GalleryTemplate,
+  GalleryTemplateProps,
+} from "../components/GalleryTemplate";
 import { HeroProps, HeroTemplate } from "../components/HeroTemplate";
 
 // THIS IS THE EDITABLE PART - edit heroProps and galleryTemplateProps to change content
-
 
 // FIRST - the project title and the three summary sections with their titles and descriptions
 const heroProps: HeroProps = {
   projectTitle: "ai light painting",
   partOneTitle: "initial concept",
   partOneDescription:
-    "The initial concept for the AI light painting project was inspired by the interplay of light and color in nature. The goal was to create an AI system that could generate stunning light paintings in real-time, responding to music and user input. ",
+    "I saw an instagram video of someone light painting and I thought that while I couldn't really do that myself, I could probably make a robot that would do the same thing. ",
   partTwoTitle: "process",
   partTwoDescription:
-    "Advanced sensors and actuators were integrated to provide real-time feedback and control, allowing the system to adapt to different environments and user interactions. Machine learning algorithms were employed to refine the painting techniques and improve overall performance.",
+    "The development process involved 3 main steps: Robot Design, AI Integration, and Click-To-Draw. The robot design experience was the most challenging, as we had almost zero tools and built everything from scratch. ",
   partThreeTitle: "results",
   partThreeDescription:
-    "The final AI light painting system demonstrated impressive capabilities, generating stunning visuals that responded to music and user input in real-time. The project showcased the potential of combining artificial intelligence with creative expression, paving the way for future advancements in interactive art and design. ",
-}
+    "The final AI light painting system demonstrated impressive capabilities, generating stunning visuals with high fidelity reconstruction. The project showcased the potential of combining artificial intelligence with creative expression, paving the way for future advancements in interactive art and design. ",
+};
 
 // SECOND - the gallery sections with their titles, media, and descriptions
 const galleryTemplateProps: GalleryTemplateProps = {
@@ -26,62 +28,104 @@ const galleryTemplateProps: GalleryTemplateProps = {
     title: "initial concept",
     cards: [
       {
-        media: { type: "video", src: "/projects/humanoid-legs/IMG_0504.mp4" },
+        media: {
+          type: "image",
+          src: "https://cdn.briannavance.com/sam-vance-website/light-painting-initial-drawing.jpeg",
+          alt: "Drawing of the AI Light Painter robot version 0",
+        },
         title: "Initial Concept",
-        description: "Here is a small description of how the initial concept was developed."
+        description:
+          "I initially threw together a super rough sketch for the light painting robot. It was going to be an arm with a light that could move up and down the length of the arm while the arm itself rotated around a central axis. This idea barely survived the lego prototype phase.",
       },
       {
-        media: { type: "video", src: "/projects/humanoid-legs/SAC_skipping_1.mp4" },
+        media: {
+          type: "video",
+          src: "https://cdn.briannavance.com/sam-vance-website/lego-light-painting1.mp4",
+        },
         title: "Initial Concept",
-        description: "Here is a small description of the process that was conducted for this project."
+        description: `This is a short video of the lego prototype based on the previous sketch.
+
+          After building this prototype, I realized that the arm design was too unstable and wobbly to create high quality light paintings. Furthermore, the design made it difficult to draw shapes that require precise horizontal movements as the arm moved in an arc rather than a straight line. While doable, I decided to go back to the drawing board and come up with a more stable design that could also achieve straight line movements.`,
       },
       {
         media: { type: "video", src: "/projects/humanoid-legs/IMG_0640.mp4" },
         title: "Initial Concept",
-        description: "Here is a small description of the results that were achieved for this project."
+        description:
+          "Here is a small description of the results that were achieved for this project.",
       },
-    ]
+    ],
   },
   partTwoProps: {
     title: "process",
     cards: [
       {
-        media: { type: "image", src: "/projects/humanoid-legs/concept.jpg", alt: "Initial Concept" },
-        title: "Process",
-        description: "Here is a small description of how the initial concept was developed."
+        media: {
+          type: "video",
+          src: "https://cdn.briannavance.com/sam-vance-website/light-painter-bad-build-1.mp4",
+        },
+        title: "Initial Build",
+        description: `I only had access to a hammer and a butter knife to build the first version of the robot. This made it very difficult to get precise cuts, and the overall build was incredibly unstable. As you can see in the video, it falls apart almost immediately.
+          
+          I procured the rails from home depot, and the wood from scrap pieces I found on facebook marketplace. The motor carriage I built using lego pieces and tape.`,
       },
       {
-        media: { type: "image", src: "/projects/humanoid-legs/process.jpg", alt: "Process" },
-        title: "Process",
-        description: "Here is a small description of the process that was conducted for this project."
+        media: {
+          type: "video",
+          src: "https://cdn.briannavance.com/sam-vance-website/light-painter-drill.mp4",
+        },
+        title: "Drilling the Wood",
+        description: `Thus, I recruited a friend who had a little more wood, and a few more tools.
+          
+          With a drill we were able to make slightly more precise holes for the rails. However, since we basically just eyeballed the placement of the holes, we still had significant stability issues. To solve this, we used a hammer and pounded coins into the holes to make them tighter.`,
       },
       {
-        media: { type: "image", src: "/projects/humanoid-legs/results.jpg", alt: "Results" },
-        title: "Process",
-        description: "Here is a small description of the results that were achieved for this project."
+        media: {
+          type: "video",
+          src: "https://cdn.briannavance.com/sam-vance-website/light-painter-finished-build.mp4",
+        },
+        title: "Assembly",
+        description: `After a couple of hours, we got the assembly almost entirely finished.
+          
+          It was still missing the carriage to hold the light, but I was able to test the vertical movement of the carriage along the rails. I used dental floss both for the string that moves the carriage up and down, as well as for the belt that moves the carriage along the rails.
+          
+          As you can see in the video, the movement is a bit jerky, but overall it could move fairly quickly along the rails.`,
       },
-    ]
+    ],
   },
   partThreeProps: {
     title: "results",
     cards: [
       {
-        media: { type: "image", src: "/projects/humanoid-legs/concept.jpg", alt: "Initial Concept" },
-        title: "Results",
-        description: "Here is a small description of how the initial concept was developed."
+        media: {
+          type: "video",
+          src: "/projects/humanoid-legs/concept.mp4",
+        },
+        title: "Initial Results",
+        description:
+          "Here is a small description of how the initial concept was developed.",
       },
       {
-        media: { type: "image", src: "/projects/humanoid-legs/process.jpg", alt: "Process" },
+        media: {
+          type: "image",
+          src: "/projects/humanoid-legs/process.jpg",
+          alt: "Process",
+        },
         title: "Results",
-        description: "Here is a small description of the process that was conducted for this project."
+        description:
+          "Here is a small description of the process that was conducted for this project.",
       },
       {
-        media: { type: "image", src: "/projects/humanoid-legs/results.jpg", alt: "Results" },
+        media: {
+          type: "image",
+          src: "/projects/humanoid-legs/results.jpg",
+          alt: "Results",
+        },
         title: "Results",
-        description: "Here is a small description of the results that were achieved for this project."
+        description:
+          "Here is a small description of the results that were achieved for this project.",
       },
-    ]
-  }
+    ],
+  },
 };
 
 export default function HumanoidLegs() {
@@ -93,4 +137,4 @@ export default function HumanoidLegs() {
       </div>
     </div>
   );
-};
+}

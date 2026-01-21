@@ -27,18 +27,16 @@ export const ProcessBox = ({
 }) => {
   const [descOpen, setDescOpen] = useState(false);
 
-
   return (
     <>
       <div className="hidden md:flex md:flex-row flex-col gap-4 md:max-w-6xl h-full w-full md:min-w-4xl overflow-visible">
-
         {/* MEDIA CONTAINER */}
         <div className="flex items-center justify-center h-full bg-black rounded-sm shrink-0">
           {media.type === "image" ? (
             <Image
               src={media.src}
               alt={media.alt}
-              width={800}    // dummy, required by Next (ignored because of class)
+              width={800} // dummy, required by Next (ignored because of class)
               height={800}
               className="max-h-full w-auto object-contain rounded-sm"
             />
@@ -57,9 +55,8 @@ export const ProcessBox = ({
         {/* TEXT BOX */}
         <div className="flex-1 flex flex-col gap-1 items-start text-start bg-zinc-800 rounded-sm p-1 md:p-5 overflow-visible">
           <h2 className="text-xl font-semibold">{title}</h2>
-          <p>{description}</p>
+          <p className="whitespace-pre-line">{description}</p>
         </div>
-
       </div>
       <div className="md:hidden relative flex items-center justify-center h-full bg-black rounded-sm shrink-0 overflow-hidden">
         {media.type === "image" ? (
@@ -98,7 +95,9 @@ export const ProcessBox = ({
                  bg-black/80 backdrop-blur-sm text-white"
           >
             <span className="font-semibold">Details</span>
-            <span className={`transition-transform duration-300 ${descOpen ? "" : "rotate-180"}`}>
+            <span
+              className={`transition-transform duration-300 ${descOpen ? "" : "rotate-180"}`}
+            >
               <KeyboardArrowDown className="w-6 h-6" />
             </span>
           </button>
@@ -106,11 +105,12 @@ export const ProcessBox = ({
           {/* Panel content */}
           <div className="h-[calc(100%-3rem)] bg-black/70 backdrop-blur-sm text-white px-4 py-3 overflow-y-auto">
             <h2 className="text-lg font-semibold">{title}</h2>
-            <p className="mt-2 text-sm leading-relaxed">{description}</p>
+            <p className="mt-2 text-sm leading-relaxed whitespace-pre-line">
+              {description}
+            </p>
           </div>
         </div>
       </div>
     </>
   );
 };
-
