@@ -1,9 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 import { Josefin_Sans } from "next/font/google";
-import { useState } from "react";
 
 const josefin = Josefin_Sans({ subsets: ["latin"] });
 
@@ -26,32 +26,41 @@ const projects = [
     left: "https://cdn.briannavance.com/sam-vance-website/light.mp4",
     right: "https://cdn.briannavance.com/sam-vance-website/light-painter-trimmed.mp4",
   },
-  // {
-  //   title: "Project 4",
-  //   left: "/previews/p4-left.jpg",
-  //   right: "/previews/p4-right.jpg",
-  // },
-  // {
-  //   title: "Project 5",
-  //   left: "/previews/p5-left.jpg",
-  //   right: "/previews/p5-right.jpg",
-  // },
-  // {
-  //   title: "Project 6",
-  //   left: "/previews/p6-left.jpg",
-  //   right: "/previews/p6-right.jpg",
-  // },
 ];
 
 export default function TOC() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<{ [key: string]: HTMLVideoElement }>({});
 
   const current = hovered !== null ? projects[hovered] : null;
 
+  // Preload videos after a delay to let other components load first
+  useEffect(() => {
+    // Wait for page to be fully loaded, then add extra delay
+    const loadVideos = () => {
+      // Give Hero and IntroVid videos priority - delay TOC videos by 2 seconds
+      setTimeout(() => {
+        Object.values(videoRefs.current).forEach((video) => {
+          if (video) {
+            video.load();
+          }
+        });
+      }, 2000);
+    };
+
+    if (document.readyState === 'complete') {
+      loadVideos();
+    } else {
+      window.addEventListener('load', loadVideos);
+      return () => window.removeEventListener('load', loadVideos);
+    }
+  }, []);
+
   return (
     <div id="projects-toc" className="relative">
-
       <motion.section
+        ref={sectionRef}
         className={`mx-auto max-w-7xl mt-34 md:mt-80 px-10 py-10 mb-40 md:mb-80 ${josefin.className} text-center`}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -77,22 +86,51 @@ export default function TOC() {
         </div>
       </motion.section>
 
+      {/* Hidden preload videos */}
+      <div className="hidden">
+        {projects.map((p, i) => (
+          <div key={`preload-${i}`}>
+            {p.left.endsWith(".mp4") && (
+              <video
+                ref={(el) => {
+                  if (el) videoRefs.current[`left-${i}`] = el;
+                }}
+                src={p.left}
+                preload="none"
+                muted
+                playsInline
+              />
+            )}
+            {(p.right.endsWith(".mp4") || p.right.endsWith(".MP4")) && (
+              <video
+                ref={(el) => {
+                  if (el) videoRefs.current[`right-${i}`] = el;
+                }}
+                src={p.right}
+                preload="none"
+                muted
+                playsInline
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
       {/* Left preview */}
       <AnimatePresence mode="wait">
         {current && (
           <motion.div
             key="left-preview"
-            initial={{ opacity: 0 }}   // slides in from left
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: .5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="absolute top-1/2 left-[8vw] -translate-y-1/2 h-[33vw] overflow-hidden"
           >
             {current.left.endsWith(".mp4") ? (
               <video
                 src={current.left}
                 className="w-full h-full"
-                rel="preload"
                 autoPlay
                 muted
                 loop
@@ -114,17 +152,16 @@ export default function TOC() {
         {current && (
           <motion.div
             key="right-preview"
-            initial={{ opacity: 0 }}    // slides in from right
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: .3, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="absolute top-1/2 right-[8vw] -translate-y-1/2 h-[33vw] overflow-hidden shadow-lg"
           >
-            {current.right.endsWith(".mp4") || current.right.endsWith(".MP4") ? (
+            {(current.right.endsWith(".mp4") || current.right.endsWith(".MP4")) ? (
               <video
                 src={current.right}
                 className="object-cover w-full h-full"
-                rel="preload"
                 autoPlay
                 muted
                 loop
@@ -140,6 +177,6 @@ export default function TOC() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div >
+    </div>
   );
 }

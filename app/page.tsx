@@ -193,7 +193,7 @@ function OverlapSection() {
 
   // Parallax transform — image moves slower
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
     <section ref={ref} className="relative flex items-center justify-center">
@@ -207,7 +207,7 @@ function OverlapSection() {
           style={{ y: textY }}
           className="relative z-10 md:w-3/4 text-center -mt-30"
         >
-          <p className="text-xl md:text-[1.75rem] font-bold leading-tight text-gray-100">
+          <p className="text-xl md:text-[1.75rem] font-bold leading-tight text-gray-300">
             I love to mess around with technology and build new things. Whether
             it's a robot that paints with light, a flying machine, or a game
             that teaches the piano, I dive in headfirst. I try to document my
@@ -232,6 +232,7 @@ function OverlapSection() {
             height={600}
             className="rounded-lg object-cover"
           />
+          <div className="absolute inset-0 bg-black/20 rounded-lg" />
         </motion.div>
       </div>
     </section>
@@ -248,8 +249,7 @@ function OverlapSection2() {
   });
 
   // Parallax transform — image moves slower
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
     <section
@@ -257,13 +257,12 @@ function OverlapSection2() {
       className="relative flex items-center justify-center overflow-visible mb-10 md:mb-40 py-26 md:py-32"
     >
       <div className="flex flex-col md:flex-row items-center justify-center relative">
-        {/* Text side */}
         <motion.div
           initial={{ opacity: 0, x: -120 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.4 }}
-          style={{ y: imageY }}
+          style={{ y: textY }}
           className="hidden md:block relative z-0 w-3/4 text-center"
         >
           <Image
@@ -273,9 +272,9 @@ function OverlapSection2() {
             height={600}
             className="rounded-lg object-cover"
           />
+          <div className="absolute inset-0 bg-black/20 rounded-lg" />
         </motion.div>
 
-        {/* Image side */}
         <motion.div
           initial={{ opacity: 0, x: 180 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -284,29 +283,12 @@ function OverlapSection2() {
           style={{ y: textY }}
           className="relative md:-ml-40 w-full md:w-3/4 z-10 -mt-20"
         >
-          <p className="text-xl md:text-[1.75rem] font-bold leading-tight text-gray-100 text-center">
+          <p className="text-xl md:text-[1.75rem] font-bold leading-tight text-gray-300 text-center">
             When I'm not building robots or coding, you can usually find me
             outdoors. I love hiking, climbing, and exploring nature. I am also
             an occasional pickleball player, and enjoy playing the piano and
             ukulele.
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: -120 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.4 }}
-          style={{ y: imageY }}
-          className="block md:hidden relative z-0 w-3/4 text-center mt-22 md:mt-32 mb-12"
-        >
-          <Image
-            src="/sam-meadows.png"
-            alt="Profile"
-            width={800}
-            height={600}
-            className="rounded-lg object-cover"
-          />
         </motion.div>
       </div>
     </section>
