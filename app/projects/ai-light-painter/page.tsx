@@ -98,7 +98,7 @@ const galleryTemplateProps: GalleryTemplateProps = {
       {
         media: {
           type: "video",
-          src: "/projects/humanoid-legs/concept.mp4",
+          src: "https://cdn.briannavance.com/sam-vance-website/light-painter-calibration.mp4",
         },
         title: "Initial Results",
         description: `I experimented with different LED brightnesses to determine what would create the best light painting effects. I took the RGB LED and waved it around in front of a camera with a long exposure setting to capture the light trails.
@@ -109,9 +109,8 @@ const galleryTemplateProps: GalleryTemplateProps = {
       },
       {
         media: {
-          type: "image",
-          src: "/projects/humanoid-legs/process.jpg",
-          alt: "Process",
+          type: "video",
+          src: "https://cdn.briannavance.com/sam-vance-website/light-painter-initial-paintings2.mp4",
         },
         title: "Light Paintings",
         description: `After I had the robot working, I created a few light paintings with it. Here are some photos of the first few light paintings it created.
@@ -124,9 +123,8 @@ const galleryTemplateProps: GalleryTemplateProps = {
       },
       {
         media: {
-          type: "image",
-          src: "/projects/humanoid-legs/results.jpg",
-          alt: "Results",
+          type: "video",
+          src: "https://cdn.briannavance.com/sam-vance-website/light.mp4",
         },
         title: "Stop Motion Videos",
         description: `I am by no means an artist, but I wanted to create something a little more in line with what had inspired me to create this robot in the first place--stop motion light painting videos.
