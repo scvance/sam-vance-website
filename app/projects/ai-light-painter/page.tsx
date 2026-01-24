@@ -6,6 +6,8 @@ import {
 } from "../components/GalleryTemplate";
 import { HeroProps, HeroTemplate } from "../components/HeroTemplate";
 
+import { MobileGalleryTemplate } from "../components/MobileGalleryTemplate";
+
 // THIS IS THE EDITABLE PART - edit heroProps and galleryTemplateProps to change content
 
 // FIRST - the project title and the three summary sections with their titles and descriptions
@@ -145,6 +147,7 @@ export default function HumanoidLegs() {
       <div className="flex flex-col relative items-center mb-20 mt-40 min-h-screen">
         <HeroTemplate {...heroProps} />
         <GalleryTemplate {...galleryTemplateProps} />
+        <MobileGalleryTemplate {...galleryTemplateProps} />
       </div>
     </div>
   );

@@ -33,17 +33,15 @@ export const ProcessBox = ({
         {/* MEDIA CONTAINER */}
         <div className="flex items-center justify-center h-full bg-black rounded-sm shrink-0">
           {media.type === "image" ? (
-            <Image
+            <img
               src={media.src}
               alt={media.alt}
-              width={800} // dummy, required by Next (ignored because of class)
-              height={800}
-              className="max-h-full w-auto object-contain rounded-sm"
+              className="h-full w-[281px] object-cover rounded-sm"
             />
           ) : (
             <video
               src={media.src}
-              className="max-h-full w-auto object-contain rounded-sm"
+              className="h-full w-[281px] object-cover rounded-sm"
               autoPlay
               loop
               muted
@@ -60,17 +58,16 @@ export const ProcessBox = ({
       </div>
       <div className="md:hidden relative flex items-center justify-center h-full bg-black rounded-sm shrink-0 overflow-hidden">
         {media.type === "image" ? (
-          <Image
+          <img
             src={media.src}
             alt={media.alt}
-            width={800}
-            height={800}
-            className="max-h-full w-auto object-contain rounded-sm"
+            className="h-full w-[281px] object-cover rounded-sm"
           />
         ) : (
           <video
             src={media.src}
-            className="max-h-full w-auto object-contain rounded-sm"
+            preload="metadata"
+            className="h-full w-[281px] object-cover rounded-sm"
             autoPlay
             loop
             muted

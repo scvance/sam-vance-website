@@ -62,7 +62,7 @@ export default function IntroVid() {
         className="relative z-0"
       >
         <video
-          className="w-full aspect-video object-cover mt-22 md:mt-30"
+          className="w-full aspect-video object-cover mt-20 md:mt-22"
           ref={videoRef}
           rel="preload"
           autoPlay
